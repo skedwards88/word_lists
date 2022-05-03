@@ -22,10 +22,7 @@ All files were processed into files that contain words that also exist in the Wo
 
 ## Compiled
 
-The `compiled/easy.txt`consists of:
-
-- words that are on common to wordnik, wiki, and gutenberg
-- words that are common to wordnik and movies
+The `compiled/easy.txt`consists of words that are on common to wordnik, wiki, and gutenberg AND words that are common to wordnik and movies, minus manually removed words (in `compiles/notActuallyEasy.txt`) that were deemed subjectively not common.
 
 The `compiled/noneasy.txt` consists of all of the wordnik words that are not in `compiled/easy.txt`.
 
