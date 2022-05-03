@@ -1,8 +1,4 @@
 def getEasyWords():
-  # The "easy" list consists of:
-  # words that are on common to wordnik, wiki, and gutenberg
-  # and words that are common to wordnik and movies
-  # minus manually rejected words
 
   gutenberg = []
   with open("processed/gutenberg.txt", "r") as file:
@@ -24,10 +20,17 @@ def getEasyWords():
     for line in file:
       notActuallyEasy.append(line.strip())
 
+  notActuallyHard = []
+  with open("compiled/notActuallyHard.txt", "r") as file:
+    for line in file:
+      notActuallyHard.append(line.strip())
+
+
   gutenbergWiki = list(set(gutenberg).intersection(set(wiki)))
-  easy = list(set(gutenbergWiki).union(set(movies)))
+  easy = list(set(gutenbergWiki).union(set(movies)).union(set(notActuallyHard)))
   culledEasy = list(set(easy).difference(set(notActuallyEasy)))
   culledEasy.sort()
+  culledEasy.sort(key=len)
 
   return culledEasy
 
@@ -45,6 +48,7 @@ def getNonEasyWords():
 
   noneasy = list(set(easy).symmetric_difference(set(wordnik)))
   noneasy.sort()
+  noneasy.sort(key=len)
 
   return noneasy
 

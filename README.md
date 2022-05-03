@@ -4,9 +4,9 @@
 
 `raw/wiki.txt` is the word frequency on Wikipedia, compiled by https://github.com/IlyaSemenov/wikipedia-word-frequency. It contains ~2.6 million entries, including non-English entries.
 
-`raw/gutenberg.txt` is the 40,000 most common words on Project Gutenberg, as compiled in the April 16, 2006 [list by Wikipedia](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#English).
+`raw/gutenberg.txt` is the 40,000 most common words on Project Gutenberg, as compiled in the April 16, 2006 [list by Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#English).
 
-`raw/movies.txt` is TODO
+`raw/movies.txt` is the 10,000 most common words from movies and TV, as compiled in the 2006 [list by Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#English).
 
 ## Processed word lists
 
@@ -22,7 +22,7 @@ All files were processed into files that contain words that also exist in the Wo
 
 ## Compiled
 
-The `compiled/easy.txt`consists of words that are on common to wordnik, wiki, and gutenberg AND words that are common to wordnik and movies, minus manually removed words (in `compiles/notActuallyEasy.txt`) that were deemed subjectively not common.
+The `compiled/easy.txt`consists of words that are on common to wordnik, wiki, and gutenberg AND words that are common to wordnik and movies. In addition, the word excludes the manually compiled `compiles/notActuallyEasy.txt` that were deemed subjectively not common and includes the manually compiled `compiles/notActuallyHard.txt` that were deemed subjectively not uncommon.
 
 The `compiled/noneasy.txt` consists of all of the wordnik words that are not in `compiled/easy.txt`.
 
