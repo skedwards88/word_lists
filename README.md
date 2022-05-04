@@ -1,3 +1,7 @@
+# Word lists
+
+**Note: This repo is now unmaintained. See https://github.com/skedwards88/word_games instead.**
+
 ## Raw word lists
 
 `raw/wordnik.txt` is an opensource wordlist from [Wordnik](https://github.com/wordnik/wordlist). It contains ~200,000 entries, plus a few entries that were added as per user request.
