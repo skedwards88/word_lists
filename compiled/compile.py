@@ -1,4 +1,6 @@
-def getEasyWords():
+import json
+
+def getCommonWords():
 
   gutenberg = []
   with open("processed/gutenberg.txt", "r") as file:
@@ -15,50 +17,41 @@ def getEasyWords():
     for line in file:
       movies.append(line.strip())
 
-  notActuallyEasy = []
-  with open("compiled/notActuallyEasy.txt", "r") as file:
+  notActuallyCommon = []
+  with open("compiled/notActuallyCommon.txt", "r") as file:
     for line in file:
-      notActuallyEasy.append(line.strip())
+      notActuallyCommon.append(line.strip())
 
-  notActuallyHard = []
-  with open("compiled/notActuallyHard.txt", "r") as file:
+  notActuallyUncommon = []
+  with open("compiled/notActuallyUncommon.txt", "r") as file:
     for line in file:
-      notActuallyHard.append(line.strip())
-
+      notActuallyUncommon.append(line.strip())
 
   gutenbergWiki = list(set(gutenberg).intersection(set(wiki)))
-  easy = list(set(gutenbergWiki).union(set(movies)).union(set(notActuallyHard)))
-  culledEasy = list(set(easy).difference(set(notActuallyEasy)))
-  culledEasy.sort()
-  culledEasy.sort(key=len)
+  common = list(set(gutenbergWiki).union(set(movies)).union(set(notActuallyUncommon)))
+  culledCommon = list(set(common).difference(set(notActuallyCommon)))
+  culledCommon.sort()
+  culledCommon.sort(key=len)
 
-  return culledEasy
+  return culledCommon
 
-def getNonEasyWords():
-  # The "noneasy" list consists of all of the wordnik words that are not on the easy list
+def getAllWords():
   wordnik = []
   with open("raw/wordnik.txt", "r") as file:
     for line in file:
       wordnik.append(line.strip())
 
-  easy = []
-  with open("compiled/easy.txt", "r") as file:
-    for line in file:
-      easy.append(line.strip())
-
-  noneasy = list(set(easy).symmetric_difference(set(wordnik)))
-  noneasy.sort()
-  noneasy.sort(key=len)
-
-  return noneasy
+  return wordnik
 
 def writeWords(path, words):
   with open(path, "w") as file:
-    for word in words:
-      file.writelines(f"{word}\n")
+    json.dump(words, file)
 
+common = getCommonWords()
+all = getAllWords()
+uncommon = list(set(common).symmetric_difference(set(all)))
+uncommon.sort()
+uncommon.sort(key=len)
 
-easy = getEasyWords()
-writeWords("compiled/easy.txt", easy)
-nonEasy = getNonEasyWords()
-writeWords("compiled/noneasy.txt", nonEasy)
+writeWords("compiled/commonWords.json", common)
+writeWords("compiled/uncommonWords.json", uncommon)
