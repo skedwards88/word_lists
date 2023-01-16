@@ -4,7 +4,11 @@ This repo takes several word lists and compiles them to a list of common words a
 
 ## Usage
 
-To use the word lists
+To use the word lists, `npm install @skedwards88/word_lists`. You may need to modify your `.npmrc` file to include `@skedwards88:registry=https://npm.pkg.github.com/`. For more information, see [the GitHub docs on installing a package](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package).
+
+## Contributing
+
+Does `compiled/commonWords.txt` include a word that you think is not commonly known, or does `compiled/uncommonWords.txt` include a word that you think is commonly known? Feel free to open an issue, or open a pull request to modify `compiled/notActuallyCommon.txt` or `compiled/notActuallyUncommon.txt`.
 
 ## Development
 
@@ -34,7 +38,7 @@ Files were processed into files that contain words that also exist in the Wordni
 
 ### Compiled word lists
 
-`compiled/commonWords.txt` consists of words that are on common to wordnik, wiki, and gutenberg AND words that are common to wordnik and movies. It omits words from `LDNOOBW.txt`. In addition, the list excludes the manually compiled `compiles/notActuallyCommon.txt` that were deemed subjectively not common and includes the manually compiled `compiles/notActuallyUncommon.txt` that were deemed subjectively not uncommon.
+`compiled/commonWords.txt` consists of words that are on common to wordnik, wiki, and gutenberg AND words that are common to wordnik and movies. It omits words from `LDNOOBW.txt`. In addition, the list excludes the manually compiled `compiled/notActuallyCommon.txt` that were deemed subjectively not common and includes the manually compiled `compiled/notActuallyUncommon.txt` that were deemed subjectively not uncommon.
 
 `compiled/uncommonWords.json` consists of all of the wordnik words that are not in `compiled/commonWords.txt`, minus words from `LDNOOBW.txt`.
 
