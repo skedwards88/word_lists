@@ -1,3 +1,8 @@
+# Word processor
+
+This repo takes several word lists and compiles them to a list of common words and a list of less common words.
+
+
 ## Raw word lists
 
 `raw/wordnik.txt` is an opensource wordlist from [Wordnik](https://github.com/wordnik/wordlist). It contains ~200,000 entries, plus a few entries that were added as per user request.
