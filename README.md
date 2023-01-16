@@ -2,7 +2,13 @@
 
 This repo takes several word lists and compiles them to a list of common words and a list of less common words.
 
-## Raw word lists
+## Usage
+
+To use the word lists
+
+## Development
+
+### Raw word lists
 
 `raw/wordnik.txt` is an opensource wordlist from [Wordnik](https://github.com/wordnik/wordlist). It contains ~200,000 entries, plus a few entries that were added as per user request.
 
@@ -14,7 +20,7 @@ This repo takes several word lists and compiles them to a list of common words a
 
 `LDNOOBW.txt` is the "list of dirty, naughty, obscene, and otherwise bad words" from [LDNOOBW](https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words), minus multi-word phrases, minus words not in `raw/wordnik.txt`, minus words that were subjectively deemed to be non-offensive due to a non-slang or scientific meaning, plus variations of words.
 
-## Processed word lists
+### Processed word lists
 
 Files were processed into files that contain words that also exist in the Wordnik list but not the LDNOOBW word list.
 
@@ -26,7 +32,7 @@ Files were processed into files that contain words that also exist in the Wordni
 
 `processed/wiki.txt` is `raw/wiki.txt`, minus words that words that do not exist in `processed/wordnik.txt`. `processed/wiki_frequency_processor.py` is the script that generated this file.
 
-## Compiled word lists
+### Compiled word lists
 
 `compiled/commonWords.txt` consists of words that are on common to wordnik, wiki, and gutenberg AND words that are common to wordnik and movies. It omits words from `LDNOOBW.txt`. In addition, the list excludes the manually compiled `compiles/notActuallyCommon.txt` that were deemed subjectively not common and includes the manually compiled `compiles/notActuallyUncommon.txt` that were deemed subjectively not uncommon.
 

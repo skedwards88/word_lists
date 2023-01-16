@@ -1,8 +1,10 @@
 {
-  "name": "word_lists",
+  "name": "@skedwards88/word_lists",
   "version": "1.0.0",
-  "description": "This repo takes several word lists and compiles them to a list of common words and a list of less common words.",
+  "description": "Lists of common and uncommon English words.",
   "main": "index.js",
+  "files": ["index.js"],
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,8 +13,8 @@
     "url": "git+https://github.com/skedwards88/word_lists.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "skedwards88",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/skedwards88/word_lists/issues"
   },
