@@ -1,5 +1,5 @@
 {
-  "name": "word_processor",
+  "name": "word_lists",
   "version": "1.0.0",
   "description": "This repo takes several word lists and compiles them to a list of common words and a list of less common words.",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skedwards88/word_processor.git"
+    "url": "git+https://github.com/skedwards88/word_lists.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/skedwards88/word_processor/issues"
+    "url": "https://github.com/skedwards88/word_lists/issues"
   },
-  "homepage": "https://github.com/skedwards88/word_processor#readme"
+  "homepage": "https://github.com/skedwards88/word_lists#readme"
 }

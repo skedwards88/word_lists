@@ -1,7 +1,6 @@
-# Word processor
+# Word Lists
 
 This repo takes several word lists and compiles them to a list of common words and a list of less common words.
-
 
 ## Raw word lists
 
