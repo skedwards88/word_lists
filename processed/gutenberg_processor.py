@@ -1,10 +1,12 @@
+root = "src/common/wordLists/"
+
 wordnik = []
-with open("raw/wordnik.txt", "r") as file:
+with open(f"{root}processed/wordnik.txt", "r") as file:
   for line in file:
     wordnik.append(line.strip())
 
 gutenberg = []
-with open("raw/gutenberg.txt", "r") as inFile:
+with open(f"{root}raw/gutenberg.txt", "r") as inFile:
   for line in inFile:
     word = line.strip()
     if not word.isalpha():
@@ -12,7 +14,8 @@ with open("raw/gutenberg.txt", "r") as inFile:
     gutenberg.append(word.upper())
 
 common = list(set(gutenberg).intersection(set(wordnik)))
+common.sort()
 
-with open("processed/gutenberg.txt", "w") as file:
+with open(f"{root}processed/gutenberg.txt", "w") as file:
   for word in common:
     file.writelines(f"{word}\n")

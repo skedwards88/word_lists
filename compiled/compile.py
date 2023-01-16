@@ -1,29 +1,31 @@
 import json
 
+root = "src/common/wordLists/"
+
 def getCommonWords():
 
   gutenberg = []
-  with open("processed/gutenberg.txt", "r") as file:
+  with open(f"{root}processed/gutenberg.txt", "r") as file:
     for line in file:
       gutenberg.append(line.strip())
 
   wiki = []
-  with open("processed/wiki.txt", "r") as file:
+  with open(f"{root}processed/wiki.txt", "r") as file:
     for line in file:
       wiki.append(line.strip())
 
   movies = []
-  with open("processed/movies.txt", "r") as file:
+  with open(f"{root}processed/movies.txt", "r") as file:
     for line in file:
       movies.append(line.strip())
 
   notActuallyCommon = []
-  with open("compiled/notActuallyCommon.txt", "r") as file:
+  with open(f"{root}compiled/notActuallyCommon.txt", "r") as file:
     for line in file:
       notActuallyCommon.append(line.strip())
 
   notActuallyUncommon = []
-  with open("compiled/notActuallyUncommon.txt", "r") as file:
+  with open(f"{root}compiled/notActuallyUncommon.txt", "r") as file:
     for line in file:
       notActuallyUncommon.append(line.strip())
 
@@ -37,7 +39,7 @@ def getCommonWords():
 
 def getAllWords():
   wordnik = []
-  with open("raw/wordnik.txt", "r") as file:
+  with open(f"{root}processed/wordnik.txt", "r") as file:
     for line in file:
       wordnik.append(line.strip())
 
@@ -45,7 +47,8 @@ def getAllWords():
 
 def writeWords(path, words):
   with open(path, "w") as file:
-    json.dump(words, file)
+    json.dump(words, file, indent=2)
+    file.writelines("\n")
 
 common = getCommonWords()
 all = getAllWords()
@@ -53,5 +56,5 @@ uncommon = list(set(common).symmetric_difference(set(all)))
 uncommon.sort()
 uncommon.sort(key=len)
 
-writeWords("compiled/commonWords.json", common)
-writeWords("compiled/uncommonWords.json", uncommon)
+writeWords(f"{root}compiled/commonWords.json", common)
+writeWords(f"{root}compiled/uncommonWords.json", uncommon)
