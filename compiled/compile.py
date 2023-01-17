@@ -48,6 +48,39 @@ def writeWords(path, words):
     json.dump(words, file, indent=2)
     file.writelines("\n")
 
+def writeWordsByLength(basePath, words):
+  len2 = []
+  len3 = []
+  len4 = []
+  len5 = []
+  len6 = []
+  len7 = []
+  len8plus = []
+
+  for word in words:
+    if len(word) <= 2:
+      len2.append(word)
+    elif len(word) == 3:
+      len3.append(word)
+    elif len(word) == 4:
+      len4.append(word)
+    elif len(word) == 5:
+      len5.append(word)
+    elif len(word) == 6:
+      len6.append(word)
+    elif len(word) == 7:
+      len7.append(word)
+    else:
+      len8plus.append(word)
+
+  writeWords(f"{basePath}Len2.json", len2)
+  writeWords(f"{basePath}Len3.json", len3)
+  writeWords(f"{basePath}Len4.json", len4)
+  writeWords(f"{basePath}Len5.json", len5)
+  writeWords(f"{basePath}Len6.json", len6)
+  writeWords(f"{basePath}Len7.json", len7)
+  writeWords(f"{basePath}Len8plus.json", len8plus)
+
 common = getCommonWords()
 all = getAllWords()
 uncommon = list(set(common).symmetric_difference(set(all)))
@@ -56,3 +89,5 @@ uncommon.sort(key=len)
 
 writeWords("compiled/commonWords.json", common)
 writeWords("compiled/uncommonWords.json", uncommon)
+writeWordsByLength("compiled/commonWords", common)
+writeWordsByLength("compiled/uncommonWords", uncommon)
