@@ -6,7 +6,21 @@
   "files": [
     "index.js",
     "compiled/commonWords.json",
-    "compiled/uncommonWords.json"
+    "compiled/commonWordsLen2.json",
+    "compiled/commonWordsLen3.json",
+    "compiled/commonWordsLen4.json",
+    "compiled/commonWordsLen5.json",
+    "compiled/commonWordsLen6.json",
+    "compiled/commonWordsLen7.json",
+    "compiled/commonWordsLen8plus.json",
+    "compiled/uncommonWords.json",
+    "compiled/uncommonWordsLen2.json",
+    "compiled/uncommonWordsLen3.json",
+    "compiled/uncommonWordsLen4.json",
+    "compiled/uncommonWordsLen5.json",
+    "compiled/uncommonWordsLen6.json",
+    "compiled/uncommonWordsLen7.json",
+    "compiled/uncommonWordsLen8plus.json"
   ],
   "type": "module",
   "scripts": {
