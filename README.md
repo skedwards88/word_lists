@@ -8,7 +8,7 @@ To use the word lists, `npm install @skedwards88/word_lists`. You may need to mo
 
 ## Contributing
 
-Does `compiled/commonWords.txt` include a word that you think is not commonly known, or does `compiled/uncommonWords.txt` include a word that you think is commonly known? Feel free to open an issue, or open a pull request to modify `compiled/notActuallyCommon.txt` or `compiled/notActuallyUncommon.txt`.
+Does `compiled/commonWords.txt` include a word that you think is _not_ commonly known, or does `compiled/uncommonWords.txt` include a word that you think _is_ commonly known? Feel free to open a pull request to modify `compiled/notActuallyCommon.txt` or `compiled/notActuallyUncommon.txt`, and run `npm run build` to compile the changes. Or, feel free to open an issue. All word choices is up to the discretion of the repository owner.
 
 ## Development
 

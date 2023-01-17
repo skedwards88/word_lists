@@ -1,6 +1,6 @@
 import json
 
-root = "src/common/wordLists/"
+root = ""
 
 def getCommonWords():
 

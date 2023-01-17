@@ -1,4 +1,4 @@
-root = "src/common/wordLists/"
+root = ""
 
 wordnik = []
 with open(f"{root}processed/wordnik.txt", "r") as file:
