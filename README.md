@@ -4,7 +4,7 @@ This project takes several word lists and compiles them to a list of common word
 
 ## Usage
 
-To use the word lists, `npm install @skedwards88/word_lists`. You may need to modify your `.npmrc` file to include `@skedwards88:registry=https://npm.pkg.github.com/`. For more information, see [the GitHub docs on installing a package](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package).
+To use the word lists, `npm install @skedwards88/word_lists`.
 
 You can import all of the words or a subset of words by length. For example `import {commonWords, uncommonWordsLen4} from "@skedwards88/word_lists";`. The exports are:
 
