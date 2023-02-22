@@ -1,6 +1,5 @@
 # TODO
 
-- split the words by length
 - add tests
 - further divide uncommon words into obscure vs uncommon?
-- declare types
+- make package workflow run the build script and bump version. also make run on push to main instead of release creation
