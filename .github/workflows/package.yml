@@ -22,21 +22,26 @@ jobs:
           git config --global user.name "skedwards88"
           git config --global user.email "skedwards88@gmail.com"
 
-      - name: Bump version
-        run: npm version patch
-
-      - name: Build
-        run: npm run build
-
-      - name: Push
-        run: |
-          git push origin main
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: 'https://registry.npmjs.org/'
+
+      - name: Build
+        run: npm run build
+
+      - name: Bump version
+        run: npm version patch
+
+      - name: Push
+        run: |
+          git push origin main
 
       - name: Publish
         run: npm publish --access public
