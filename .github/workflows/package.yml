@@ -25,7 +25,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.9'
 
       - name: Setup node
         uses: actions/setup-node@v3
@@ -39,6 +39,8 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Commit build results
+        run: git add compiled && git commit -m "update word lists"
       - name: Push
         run: |
           git push origin main
