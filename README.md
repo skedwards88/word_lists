@@ -29,7 +29,7 @@ uncommonWordsLen8plus | All uncommon words of length 8+
 
 ## Contributing
 
-Does `compiled/commonWords.txt` include a word that you think is _not_ commonly known, or does `compiled/uncommonWords.txt` include a word that you think _is_ commonly known? Feel free to open a pull request to modify `compiled/notActuallyCommon.txt` or `compiled/notActuallyUncommon.txt`. Or, feel free to open an issue. The final word choice is up to the discretion of the repository owner.
+Does `compiled/commonWords.txt` include a word that you think is _not_ commonly known, or does `compiled/uncommonWords.txt` include a word that you think _is_ commonly known? Feel free to open a pull request to add the word to `compiled/notActuallyCommon.txt` or `compiled/notActuallyUncommon.txt`. Or, feel free to open an issue to request the change. The final word choice is up to the discretion of the repository owner.
 
 ## Development
 
