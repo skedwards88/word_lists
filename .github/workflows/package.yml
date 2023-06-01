@@ -41,6 +41,8 @@ jobs:
 
       - name: Commit build results
         run: git add compiled && git commit -m "update word lists"
+        continue-on-error: true # keep going even if nothing to commit because I may have compiled manually
+
       - name: Push
         run: |
           git push origin main
