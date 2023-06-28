@@ -5,6 +5,7 @@ This project takes several word lists and compiles them to a list of common word
 ![npm](https://img.shields.io/npm/v/@skedwards88/word_lists)
 
 https://www.npmjs.com/package/@skedwards88/word_lists
+
 ## Usage
 
 To use the word lists, `npm install @skedwards88/word_lists`.
