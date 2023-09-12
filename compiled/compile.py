@@ -12,6 +12,11 @@ def getCommonWords():
     for line in file:
       wiki.append(line.strip())
 
+  brysbaert = []
+  with open("processed/brysbaert.txt", "r") as file:
+    for line in file:
+      brysbaert.append(line.strip())
+
   movies = []
   with open("processed/movies.txt", "r") as file:
     for line in file:
@@ -27,8 +32,16 @@ def getCommonWords():
     for line in file:
       notActuallyUncommon.append(line.strip())
 
-  gutenbergWiki = list(set(gutenberg).intersection(set(wiki)))
-  common = list(set(gutenbergWiki).union(set(movies)).union(set(notActuallyUncommon)))
+  # Take words that are included in Guttenburg AND wiki
+  common = list(set(gutenberg).intersection(set(wiki)))
+  # And words that are included in movies
+  common = list(set(common).union(set(movies)))
+  # And words that are included in brysbaert
+  common = list(set(common).union(set(brysbaert)))
+  # And words that are included in notActuallyUncommon
+  common = list(set(common).union(set(notActuallyUncommon)))
+
+  # Remove words from notActuallyCommon, sorted alphabetically then sorted by length
   culledCommon = list(set(common).difference(set(notActuallyCommon)))
   culledCommon.sort()
   culledCommon.sort(key=len)

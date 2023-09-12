@@ -31,6 +31,8 @@ uncommonWordsLen6 | All uncommon words of length 6
 uncommonWordsLen7 | All uncommon words of length 7
 uncommonWordsLen8plus | All uncommon words of length 8+
 
+**Note**: Because these word lists use data from from [Brysbaert et al](https://doi.org/10.3758/s13428-018-1077-9), usage is limited to non-commercial usage. You may fork this repository and omit the `brysbaert` data if you want to use these lists for other purposes.
+
 ## Contributing
 
 Does `compiled/commonWords.txt` include a word that you think is _not_ commonly known, or does `compiled/uncommonWords.txt` include a word that you think _is_ commonly known? Feel free to open a pull request to add the word to `compiled/notActuallyCommon.txt` or `compiled/notActuallyUncommon.txt`. Or, feel free to open an issue to request the change. The final word choice is up to the discretion of the repository owner.
@@ -39,7 +41,7 @@ Does `compiled/commonWords.txt` include a word that you think is _not_ commonly 
 
 ### Raw word lists
 
-`raw/wordnik.txt` is an opensource wordlist from [Wordnik](https://github.com/wordnik/wordlist). It contains ~200,000 entries, plus a few entries that were added as per user request.
+`raw/wordnik.txt` is an opensource wordlist from [Wordnik](https://github.com/wordnik/wordlist), plus a few entries that were added as per user request. It contains ~200,000 entries.
 
 `raw/wiki.txt` is the word frequency on Wikipedia, compiled by https://github.com/IlyaSemenov/wikipedia-word-frequency. It contains ~2.6 million entries, including non-English entries.
 
@@ -47,7 +49,9 @@ Does `compiled/commonWords.txt` include a word that you think is _not_ commonly 
 
 `raw/movies.txt` is the 10,000 most common words from movies and TV, as compiled in the 2006 [list by Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#English).
 
-`LDNOOBW.txt` is the "list of dirty, naughty, obscene, and otherwise bad words" from [LDNOOBW](https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words), minus multi-word phrases, minus words not in `raw/wordnik.txt`, minus words that were subjectively deemed to be non-offensive due to a non-slang or scientific meaning, plus variations of words.
+`raw/LDNOOBW.txt` is the "list of dirty, naughty, obscene, and otherwise bad words" from [LDNOOBW](https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words), minus multi-word phrases, minus words not in `raw/wordnik.txt`, minus words that were subjectively deemed to be non-offensive due to a non-slang or scientific meaning, plus variations of words.
+
+`raw/brysbaert.txt` is the [word prevalence data](https://osf.io/nbu9e) from [Brysbaert, M., Mandera, P., McCormick, S.F. et al. Word prevalence norms for 62,000 English lemmas. Behav Res 51, 467–479 (2019)](https://doi.org/10.3758/s13428-018-1077-9). The columns are `Word`, `Pknown`, `Nobs`, `Prevalence`, `FreqZipfUS`.
 
 ### Processed word lists
 
@@ -59,11 +63,20 @@ Files were processed into files that contain words that also exist in the Wordni
 
 `processed/movies.txt` is `raw/movies.txt` minus words that do not exist in `processed/wordnik.txt`. `processed/movies_processor.py` is the script that generated this file.
 
-`processed/wiki.txt` is `raw/wiki.txt`, minus words that words that do not exist in `processed/wordnik.txt`. `processed/wiki_frequency_processor.py` is the script that generated this file.
+`processed/wiki.txt` is `raw/wiki.txt`, minus words with less than 1000 occurrences, minus words that words that do not exist in `processed/wordnik.txt`. `processed/wiki_processor.py` is the script that generated this file.
+
+`processed/brysbaert.txt` is `raw/brysbaert.txt`, minus words that have a `pkonwn` of less than 1.00, minus words that words that do not exist in `processed/wordnik.txt`. `processed/brysbaert_processor.py` is the script that generated this file.
 
 ### Compiled word lists
 
-`compiled/commonWords.txt` consists of words that are on common to wordnik, wiki, and gutenberg AND words that are common to wordnik and movies. It omits words from `LDNOOBW.txt`. In addition, the list excludes the manually compiled `compiled/notActuallyCommon.txt` that were deemed subjectively not common and includes the manually compiled `compiled/notActuallyUncommon.txt` that were deemed subjectively not uncommon.
+`compiled/commonWords.txt` consists of words that meet all of the following requirements:
+
+- common to the processed wordnik, wiki, and gutenberg lists
+- common to the processed wordnik and movies lists
+- common to the processed wordnik and brysbaert lists
+- not on the `LDNOOBW.txt` list
+- not on the manually compiled `compiled/notActuallyCommon.txt` list, which contains words that were deemed subjectively not common
+- on the manually compiled `compiled/notActuallyUncommon.txt` list, which contains words that were deemed subjectively not uncommon
 
 `compiled/uncommonWords.json` consists of all of the wordnik words that are not in `compiled/commonWords.txt`, minus words from `LDNOOBW.txt`.
 
