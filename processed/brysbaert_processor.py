@@ -3,7 +3,7 @@ with open("processed/wordnik.txt", "r") as file:
   for line in file:
     wordnik.append(line.strip())
 
-minPKnown = 1
+minPKnown = 0.96
 brysbaert = []
 with open("raw/brysbaert.txt", "r") as inFile:
   for line in inFile:

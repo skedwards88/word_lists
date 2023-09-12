@@ -65,7 +65,7 @@ Files were processed into files that contain words that also exist in the Wordni
 
 `processed/wiki.txt` is `raw/wiki.txt`, minus words with less than 1000 occurrences, minus words that words that do not exist in `processed/wordnik.txt`. `processed/wiki_processor.py` is the script that generated this file.
 
-`processed/brysbaert.txt` is `raw/brysbaert.txt`, minus words that have a `pkonwn` of less than 1.00, minus words that words that do not exist in `processed/wordnik.txt`. `processed/brysbaert_processor.py` is the script that generated this file.
+`processed/brysbaert.txt` is `raw/brysbaert.txt`, minus words that have a `pkonwn` of less than 0.96, minus words that words that do not exist in `processed/wordnik.txt`. `processed/brysbaert_processor.py` is the script that generated this file.
 
 ### Compiled word lists
 
