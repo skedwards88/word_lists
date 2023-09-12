@@ -1,6 +1,6 @@
 {
   "name": "@skedwards88/word_lists",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Lists of common and uncommon English words.",
   "main": "index.js",
   "files": [
