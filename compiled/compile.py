@@ -27,6 +27,11 @@ def getCommonWords():
     for line in file:
       notActuallyCommon.append(line.strip())
 
+  brysbaertUncommon = []
+  with open("processed/brysbaertUncommon.txt", "r") as file:
+    for line in file:
+      brysbaertUncommon.append(line.strip())
+
   notActuallyUncommon = []
   with open("compiled/notActuallyUncommon.txt", "r") as file:
     for line in file:
@@ -38,15 +43,21 @@ def getCommonWords():
   common = list(set(common).union(set(movies)))
   # And words that are included in brysbaert
   common = list(set(common).union(set(brysbaert)))
+
+  # Remove words from brysbaertUncommon
+  common = list(set(common).difference(set(brysbaertUncommon)))
+  
   # And words that are included in notActuallyUncommon
   common = list(set(common).union(set(notActuallyUncommon)))
 
-  # Remove words from notActuallyCommon, sorted alphabetically then sorted by length
-  culledCommon = list(set(common).difference(set(notActuallyCommon)))
-  culledCommon.sort()
-  culledCommon.sort(key=len)
+  # Remove words from notActuallyCommon
+  common = list(set(common).difference(set(notActuallyCommon)))
 
-  return culledCommon
+  # Sort alphabetically then sort by length
+  common.sort()
+  common.sort(key=len)
+
+  return common
 
 def getAllWords():
   wordnik = []
