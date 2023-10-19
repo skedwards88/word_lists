@@ -9,51 +9,51 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # write required for pushing changes; otherwise just read
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # publish:
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: write # write required for pushing changes; otherwise just read
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Setup git config
-        run: |
-          git config --global user.name "skedwards88"
-          git config --global user.email "skedwards88@gmail.com"
+  #     - name: Setup git config
+  #       run: |
+  #         git config --global user.name "skedwards88"
+  #         git config --global user.email "skedwards88@gmail.com"
 
-      - name: Setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+  #     - name: Setup python
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: '3.9'
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: 'https://registry.npmjs.org/'
+  #     - name: Setup node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+  #         registry-url: 'https://registry.npmjs.org/'
 
-      - name: Bump version
-        run: npm version patch
+  #     - name: Bump version
+  #       run: npm version patch
 
-      - name: Build
-        run: npm run build
+  #     - name: Build
+  #       run: npm run build
 
-      - name: Commit build results
-        run: git add compiled && git add processed && git commit -m "update word lists"
-        continue-on-error: true # keep going even if nothing to commit because I may have compiled manually
+  #     - name: Commit build results
+  #       run: git add compiled && git add processed && git commit -m "update word lists"
+  #       continue-on-error: true # keep going even if nothing to commit because I may have compiled manually
 
-      - name: Push
-        run: |
-          git push origin main
+  #     - name: Push
+  #       run: |
+  #         git push origin main
 
-      - name: Publish
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+  #     - name: Publish
+  #       run: npm publish --access public
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
 
   update_word_games:
-    needs: publish
+    # needs: publish
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -64,9 +64,10 @@ jobs:
         id: generate_token
         uses: actions/create-github-app-token@v1
         with:
-          app_id: ${{ secrets.WORD_GAME_UPDATER_APP_ID }}
-          private_key: ${{ secrets.WORD_GAME_UPDATER_APP_PRIVATE_KEY }}
-
+          app-id: ${{ secrets.WORD_GAME_UPDATER_APP_ID }}
+          private-key: ${{ secrets.WORD_GAME_UPDATER_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ matrix.game }}
       - name: Update word game
         run: gh api repos/skedwards88/$GAME/dispatches --method POST --field event_type=update-word-lists
         env:
