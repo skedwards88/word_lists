@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        game: [lexlet, crossjig, lexogon, gribbles, word_games]
+        game: [lexlet, crossjig, lexogon, gribbles, word_games, wordfall]
     steps:
       - name: Generate a token
         id: generate_token
