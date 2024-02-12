@@ -8,7 +8,7 @@ maxUncommonPKnown = 0.50
 brysbaertCommon = []
 brysbaertUncommon = []
 with open("raw/brysbaert.txt", "r") as inFile:
-    for line in inFile:
+  for line in inFile:
         word, pKnown = line.split(",")[:2]
         if float(pKnown) >= minCommonPKnown:
             brysbaertCommon.append(word.upper())
