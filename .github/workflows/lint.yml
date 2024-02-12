@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          pip install autopep8
+
+      - name: Lint
+        run: |
+          find . -type f -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
