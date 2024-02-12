@@ -25,3 +25,10 @@ jobs:
       - name: Lint
         run: |
           find . -type f -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
+
+      - name: Check for linter changes
+        run: |
+          if ! git diff --exit-code; then
+            echo "Code style violations found. Run 'npm run lint' and commit the changes to resolve."
+            exit 1
+          fi
