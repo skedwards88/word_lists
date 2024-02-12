@@ -24,7 +24,7 @@ jobs:
 
       - name: Lint
         run: |
-          find . -type f -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
+          autopep8 --in-place --recursive .
 
       - name: Check for linter changes
         run: |

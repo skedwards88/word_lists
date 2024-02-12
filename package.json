@@ -26,7 +26,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "python3 processed/wordnik_processor.py && python3 processed/wiki_processor.py && python3 processed/movie_processor.py && python3 processed/gutenberg_processor.py && python3 processed/brysbaert_processor.py && python3 compiled/compile.py",
-    "lint": "find . -type f -name '*.py' -exec autopep8 --in-place --aggressive --aggressive {} \\;"
+    "lint": "autopep8 --in-place --recursive ."
   },
   "repository": {
     "type": "git",
