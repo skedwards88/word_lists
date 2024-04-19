@@ -6,6 +6,17 @@ This project takes several word lists and compiles them to a list of common word
 
 https://www.npmjs.com/package/@skedwards88/word_lists
 
+## Appreciation
+
+Thanks to:
+
+- [An extensive list of words by Wordnik](https://github.com/wordnik/wordlist)
+- [A compilation of Wikipedia word frequency by IlyaSemenov](https://github.com/IlyaSemenov/wikipedia-word-frequency)
+- [A compilation of Project Gutenberg word frequency by Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#English)
+- [A compilation of movies and TV word frequency by Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#English)
+- [The "list of dirty, naughty, obscene, and otherwise bad words" from LDNOOBW](https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words)
+- [Word prevalence data from Brysbaert et al](https://doi.org/10.3758/s13428-018-1077-9)
+
 ## Usage
 
 To use the word lists, `npm install @skedwards88/word_lists`.
@@ -41,7 +52,7 @@ Does `compiled/commonWords.txt` include a word that you think is _not_ commonly 
 
 ### Raw word lists
 
-`raw/wordnik.txt` is an opensource wordlist from [Wordnik](https://github.com/wordnik/wordlist), plus a few entries that were added as per user request. It contains ~200,000 entries.
+`raw/wordnik.txt` is an open source word list from [Wordnik](https://github.com/wordnik/wordlist), plus a few entries that were added as per user request. It contains ~200,000 entries.
 
 `raw/wiki.txt` is the word frequency on Wikipedia, compiled by https://github.com/IlyaSemenov/wikipedia-word-frequency. It contains ~2.6 million entries, including non-English entries.
 
