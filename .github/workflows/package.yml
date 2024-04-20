@@ -57,6 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        # When adding a new game, also grant the app installation (https://github.com/settings/installations/43072167) access to the repo
         game: [lexlet, crossjig, lexogon, gribbles, word_games, wordfall, blobble]
     steps:
       - name: Generate a token
