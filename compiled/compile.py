@@ -38,6 +38,10 @@ def getCommonWords():
         for line in file:
             notActuallyUncommon.append(line.strip())
 
+    doublyExcepted = list(set(notActuallyCommon).intersection(set(notActuallyUncommon)))
+    if len(doublyExcepted) > 0:
+        print(f'Words were both manually excluded and included: {doublyExcepted}')
+
     # Take words that are included in Guttenburg AND wiki
     common = list(set(gutenberg).intersection(set(wiki)))
     # And words that are included in movies
