@@ -13,9 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # write required for pushing changes; otherwise just read
+      id-token: write # Required for OIDC for npm
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Setup git config
         run: |
@@ -23,15 +24,15 @@ jobs:
           git config --global user.email "skedwards88@gmail.com"
 
       - name: Setup python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.9'
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 16
-          registry-url: 'https://registry.npmjs.org/'
+          node-version: 24
+          registry-url: "https://registry.npmjs.org/"
 
       - name: Bump version
         run: npm version patch
@@ -49,8 +50,6 @@ jobs:
 
       - name: Publish
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
 
   update_word_games:
     needs: publish
@@ -62,12 +61,13 @@ jobs:
     steps:
       - name: Generate a token
         id: generate_token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.WORD_GAME_UPDATER_APP_ID }}
           private-key: ${{ secrets.WORD_GAME_UPDATER_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: ${{ matrix.game }}
+
       - name: Update word game
         run: gh api repos/skedwards88/$GAME/dispatches --method POST --field event_type=update-word-lists
         env:
